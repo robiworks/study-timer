@@ -36,15 +36,17 @@ body {
     color: hsl(0, 0%, 50%);
 }
 
-/*
 @media (prefers-color-scheme: dark) {
     body {
         background-color: hsl(0, 0%, 10%);
         color: hsl(0, 0%, 100%);
     }
 
-    .timer-trigger:hover {
+    .timer-trigger {
         color: hsl(0, 0%, 90%);
     }
+
+    .timer-trigger:hover {
+        color: hsl(0, 0%, 80%);
+    }
 }
-*/
