@@ -1,0 +1,50 @@
+html {
+    font-family: 'Oswald', sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.timer-wrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 75%;
+    text-align: center;
+}
+
+.timer-time {
+    font-weight: 700;
+    font-size: 400%;
+    margin: 0;
+    padding: 0;
+}
+
+.timer-trigger {
+    font-size: 125%;
+    cursor: pointer;
+}
+
+.timer-trigger:hover {
+    color: hsl(0, 0%, 20%);
+}
+
+.timer-separator {
+    color: hsl(0, 0%, 50%);
+}
+
+/*
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: hsl(0, 0%, 10%);
+        color: hsl(0, 0%, 100%);
+    }
+
+    .timer-trigger:hover {
+        color: hsl(0, 0%, 90%);
+    }
+}
+*/
