@@ -1,26 +1,42 @@
+// HTML elements for timer functionality
 var timer = document.getElementById("timer");
 var trigger = document.getElementById("trigger");
 var reset = document.getElementById("reset");
 
-function startTimer(duration) {
-    let data = duration, minutes, seconds;
-    setInterval(function() {
-        minutes = parseInt(data / 60, 10);
-        seconds = parseInt(data % 60, 10);
+// Alarm sound file
+const alarm = new Audio("audio/mixkit-happy-bells-notification.wav");
 
-        minutes = minutes < 10 ? "0" + minutes : minutes;
-        seconds = seconds < 10 ? "0" + seconds : seconds;
+var remainingTime = 3600;
+var isStudyBlock = true;
+var isPaused = true;
 
-        timer.innerHTML = minutes + "m " + seconds + "s";
-        console.log(minutes, seconds);
-        
-        if (--data < 0) {
-            data = duration;
+var t = setInterval(function() {
+    if (!isPaused) {
+        let minutes = parseInt(remainingTime / 60, 10);
+        timer.innerHTML = minutes + "min";
+        remainingTime--;
+
+        if (remainingTime == 0) {
+            if (isStudyBlock) {
+                remainingTime = 600;
+                alarm.play();
+            } else {
+                remainingTime = 3600;
+                alarm.play();
+            }
+            isStudyBlock = !isStudyBlock;
         }
-    }, 1000);
-}
+    }
+}, 1000);
 
-window.onload = function() {
-    let oneHour = 20;
-    startTimer(oneHour);
-}
+trigger.addEventListener("click", function() {
+    trigger.innerHTML = isPaused ? "pause" : "resume";
+    isPaused = !isPaused;
+});
+
+reset.addEventListener("click", function() {
+    trigger.innerHTML = "start";
+    timer.innerHTML = "Study Timer";
+    isPaused = true;
+    remainingTime = 3600;
+});
